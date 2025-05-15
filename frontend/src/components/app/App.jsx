@@ -6,7 +6,7 @@ function App() {
   
 
   return (
-   <div className="flex flex-col items-center justify-center text-center bg-gray-600 dark-bg [#112d49]">
+   <div className="flex flex-col items-center justify-center  bg-gray-600 dark-bg [#112d49]">
        <Header />
 
       <main className=" container flex justify-between w-full mb-4 max-md:flex-col">
