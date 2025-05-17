@@ -1,21 +1,23 @@
 import { useSelector } from "react-redux"
 
-import ListItem from "../list-item/ListItem"
+import ListItems from "../list-item/ListItem"
 
 
 
 const List = () => {
-  const books = useSelector(state => state.books)
-  
+  const books = useSelector((state) => state.books)
   return (
     <div className="p-4 m-4 bg-[#f2f2f2] rounded-lg shadow-lg">
       <h2 className="text-center">Book List</h2>
-      <ul className="p-0 m-4 ">
+      <ul className="p-0 m-4 max-h-[520px] min-h-[145px] overflow-y-auto">
         {
           !books.length ? 
-          <p>No Books available</p>
-          :
-          books.map(book => <ListItem key={book.id} book={book} />)
+          <p>No Books available</p> :
+          books.map((book) => {
+            return (
+              <ListItems book={book} key={book.id} />
+            )
+          })
         }
       </ul>
     </div>
