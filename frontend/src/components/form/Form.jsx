@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux'
 import { addBook } from '../../redux/books/actionCreators';
 import { v4 as uuidv4 } from 'uuid';
 import data from "../../data/data.json"
+import createBookWithID from "../../utils/createBookWithID.js";
 
 const Form = () => {
   const [title, setTitle] = useState("")
@@ -16,7 +17,7 @@ const Form = () => {
     
     if(title && author) {
       
-      dispatch(addBook({ id: uuidv4(), title, author, isFavorite: false }));
+      dispatch(addBook(createBookWithID({title, author,})));
       setTitle("")
       setAuthor("")
     }
@@ -25,11 +26,8 @@ const Form = () => {
   }
 
 
-  const hendleAddRandomBook =() => {
-    const randIndex = Math.floor(Math.random()* data.length);
-    const rndBook = data[randIndex]
-    dispatch(addBook({...rndBook,id: uuidv4(), isFavorite: false}));
-  }
+  const hendleAddRandomBook =() => dispatch(addBook(createBookWithID(data[Math.floor(Math.random()* data.length)])));
+  
 
   return (
     <div className="w-full p-4 m-4 bg-[#f2f2f2] rounded-lg shadow-lg">
