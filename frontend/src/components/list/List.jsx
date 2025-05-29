@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { selectTitleFilter } from "../../redux/slices/filterSlice";
+import { selectAuthorFilter, selectTitleFilter } from "../../redux/slices/filterSlice";
 import ListItems from "../list-item/ListItem"
 
 
@@ -7,10 +7,13 @@ import ListItems from "../list-item/ListItem"
 const List = () => {
   const books = useSelector(state => state.books);
   const booksByFilteredTitle = useSelector(selectTitleFilter);
+  const booksByFilteredAuthor = useSelector(selectAuthorFilter)
 
   const filteredBooks = books.filter(book => {
     const matchesTitle = book.title.toLowerCase().includes(booksByFilteredTitle.toLowerCase());
-    return matchesTitle;
+    const matchesAuthor = book.author.toLowerCase().includes(booksByFilteredAuthor.toLowerCase());
+
+    return matchesTitle && matchesAuthor;
   });
   console.log(filteredBooks);
 
