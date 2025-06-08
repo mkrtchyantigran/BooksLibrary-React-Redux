@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {useDispatch} from 'react-redux'
 // import { addBook } from '../../redux/books/actionCreators';
 import { addBook } from '../../redux/slices/bookSlice.js';
-import data from "../../data/data.json"
+import data from "../../../../data/data.json"
 import createBookWithID from "../../utils/createBookWithID.js";
 import BookSlice from '../../redux/slices/bookSlice.js';
 
