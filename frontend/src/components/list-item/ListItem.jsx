@@ -1,10 +1,18 @@
 
 import { useDispatch } from "react-redux";
 import { HiArchiveBox, HiBookmark  } from "react-icons/hi2";
-import { deleteBook, toggleFavorite } from "../../redux/books/actionCreators";
 
+// import { deleteBook, toggleFavorite } from "../../redux/books/actionCreators";
 
-const ListItems = ({book}) => {
+import { deleteBook, toggleFavorite} from "../../redux/slices/bookSlice";
+
+import markedMatch from "../../utils/markedMatch"
+
+const ListItems = ({
+    book,
+    booksByFilteredTitle, 
+    booksByFilteredAuthor 
+}) => {
   const dispatch = useDispatch();
   
 const handleDeleteBook = (id) => {
@@ -17,10 +25,15 @@ const hendleToggleFavortie = (id) => dispatch(toggleFavorite(id));
   return (
    <li className="flex justify-between items-center py-2 mb-2 rounded-lg px-4 border-b border-gray-300 bg-white hover:bg-[#dbe4f8] transition-colors duration-300">
       <div>
-        <h3>Title: {book.title}</h3>
-      <p>
-        Author:
-        <strong>{book.author}</strong></p>
+        <h3>
+          <span className="text-xs mr-2">Title:</span>
+          {markedMatch(book.title, booksByFilteredTitle)}
+        </h3>
+        <p>
+          <span className="text-xs mr-2">Author:</span>
+          <strong>{markedMatch(book.author, booksByFilteredAuthor)}</strong>
+          
+        </p>
       </div>
       <div className="flex gap-2">
         <button

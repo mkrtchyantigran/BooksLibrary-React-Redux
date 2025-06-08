@@ -1,15 +1,21 @@
 
 import { useState } from 'react';
 import {useDispatch} from 'react-redux'
-import { addBook } from '../../redux/books/actionCreators';
-import { v4 as uuidv4 } from 'uuid';
+// import { addBook } from '../../redux/books/actionCreators';
+import { addBook } from '../../redux/slices/bookSlice.js';
 import data from "../../data/data.json"
 import createBookWithID from "../../utils/createBookWithID.js";
+import BookSlice from '../../redux/slices/bookSlice.js';
 
 const Form = () => {
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
+  const [state, setState] = useState({
+    title: "",
+    author: ""
+  });
+
   const dispatch = useDispatch();
+  const {title, author} = state;
+  
 
   	
   const handleSubmit = (e) => {
@@ -17,18 +23,16 @@ const Form = () => {
     
     if(title && author) {
       
-      dispatch(addBook(createBookWithID({title, author,})));
-      setTitle("")
-      setAuthor("")
+      dispatch(addBook(createBookWithID({title, author,})))
+      setState({title: "", author: ""})
     }
 
-   
   }
 
 
   const hendleAddRandomBook =() => dispatch(addBook(createBookWithID(data[Math.floor(Math.random()* data.length)])));
   
-
+;
   return (
     <div className="w-full p-4 m-4 bg-[#f2f2f2] rounded-lg shadow-lg">
       <h2 className='mb-4 text-2xl'>add a new Book</h2>
@@ -36,7 +40,7 @@ const Form = () => {
           <input 
             type="text"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setState(prevState => ({ ...prevState, title: e.target.value }))}
             className='w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg'
             placeholder='Book Title'
           />
@@ -44,15 +48,14 @@ const Form = () => {
           <input 
             type="text"
             value={author}
-            onChange={(e) => setAuthor(e.target.value)}
+            onChange={(e) => setState(prevState => ({...prevState, author: e.target.value}))}
             className='w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg'
             placeholder='Book Author'
           />
           <div className='flex gap-4 max-lg:flex-wrap'>
         <button
-        type='submit'
+          type='submit'
           className="flex-1 max-md:basis-full max-lg:basis-1/3  bg-emerald-500 text-white text-sm py-2 px-4 rounded-md cursor-pointer  hover:bg-emerald-600 transition-colors duration-300"
-
         >
           Add Book
         </button>

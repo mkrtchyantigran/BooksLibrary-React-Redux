@@ -12,7 +12,7 @@ const initialState = [
     id:2,
     title: "Book 1",
     author: "Author 1",
-    isFavorite: false
+    isFavorite: true
   },
    {
     id:3,
