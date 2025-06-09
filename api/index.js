@@ -8,6 +8,7 @@ const app = express();
 app.use(cors());
 
 app.get("/random-book", (req, res) => {
+  console.log(res)
   res.json(booksData[Math.floor(Math.random() * booksData.length)]);
 });
 
