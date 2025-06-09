@@ -8,18 +8,21 @@ const initialState = [
     id: 1,
     title: "Book 1",
     author: "Author 1",
+    source: "initial",
     isFavorite: false
   },
    {
     id:2,
     title: "Book 1",
     author: "Author 1",
+    source: "initial",
     isFavorite: true
   },
    {
     id:3,
     title: "Book 1",
     author: "Author 1",
+    source: "initial",
     isFavorite: false
   },
   

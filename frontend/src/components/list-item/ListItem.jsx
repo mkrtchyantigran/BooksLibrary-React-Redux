@@ -32,7 +32,9 @@ const hendleToggleFavortie = (id) => dispatch(toggleFavorite(id));
         <p>
           <span className="text-xs mr-2">Author:</span>
           <strong>{markedMatch(book.author, booksByFilteredAuthor)}</strong>
-          
+        </p>
+        <p className="text-xs text-gray-400 mt-1">
+          {book.source}
         </p>
       </div>
       <div className="flex gap-2">
