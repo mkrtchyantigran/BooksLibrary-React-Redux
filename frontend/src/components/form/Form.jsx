@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux'
 // import { addBook } from '../../redux/books/actionCreators';
 
-import axios from "axios"
+
 import createBookWithID from "../../utils/createBookWithID.js";
 
-import { addBook } from '../../redux/slices/bookSlice.js';
+import { addBook, FetchBook } from '../../redux/slices/bookSlice.js';
 import data from "../../../../data/data.json"
 
 const Form = () => {
@@ -34,19 +34,10 @@ const Form = () => {
 
   const hendleAddRandomBook =() => dispatch(addBook(createBookWithID(data[Math.floor(Math.random() * data.length)], "via random")));
   
+  	
+  
 
-  const handleAddRandomBookViaAPI = async () => {
-    try {
-      const res = await axios.get("http://localhost:7777/random-book");
-    if( res?.data && res?.data.title && res?.data.author) {
-      dispatch(addBook(createBookWithID(res.data, "via api")));
-    }
-    }
-
-    catch (e) {
-      console.log(e)
-    }
-  };
+  const handleAddRandomBookViaAPI =  () => dispatch(FetchBook())
 
 ;
   return (
