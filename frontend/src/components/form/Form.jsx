@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux'
 
 import createBookWithID from "../../utils/createBookWithID.js";
 
-import { addBook, FetchBook } from '../../redux/slices/bookSlice.js';
+import { addBook, randomBook, FetchBook } from '../../redux/slices/bookSlice.js';
 import data from "../../../../data/data.json"
 
 const Form = () => {
