@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux"
 import { 
   setTitleFilter, 
@@ -11,7 +11,7 @@ import {
 } from "../../redux/slices/filterSlice"
 
 const Filter = () => {
-  const [checked, setChecked] = useState(false);
+
   const dispatch = useDispatch();
 
   const stateOftitle = useSelector(selectTitleFilter);
@@ -20,21 +20,18 @@ const Filter = () => {
 
   const handleByTitle = (e) => dispatch(setTitleFilter(e.target.value))
   const handleByAuthor = (e) => dispatch(setAuthorFilter(e.target.value))
-  const handleByOnlyFavorite = () => {
-    setChecked(prevState => !prevState)
-    dispatch(setOnlyFavortieFilter());
-  };
+  const handleByOnlyFavorite = () => dispatch(setOnlyFavortieFilter());
   const handleResetFilters = () => dispatch(resetFilters());
 
   return (
     <div className=" flex flex-col gap-4 p-4 m-4 bg-[#f2f2f2] rounded-lg shadow-lg">
       <div className="flex gap-4 max-lg: flex-wrap">
         <input 
-        onChange={handleByTitle}
-        value={stateOftitle}
-        type="text"
-        placeholder= "Filter by title"
-        className="px-4 py-2 border-1 border-gray-300 rounded-lg"
+          onChange={handleByTitle}
+          value={stateOftitle}
+          type="text"
+          placeholder= "Filter by title"
+          className="px-4 py-2 border-1 border-gray-300 rounded-lg"
         />
         <input 
         onChange={handleByAuthor}
@@ -52,7 +49,7 @@ const Filter = () => {
           type="checkbox"
           checked={stateOfOnlyFavorite}
           style={
-            checked ? {
+            stateOfOnlyFavorite ? {
             clipPath:"polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)",
             transformOrigin: "bottom left",
             appearance: "none",
