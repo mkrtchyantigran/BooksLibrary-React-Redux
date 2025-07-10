@@ -1,6 +1,6 @@
 
 import { useDispatch } from "react-redux";
-import { HiArchiveBox, HiBookmark  } from "react-icons/hi2";
+import { FaTrashAlt, FaBookmark  } from "react-icons/fa";
 
 // import { deleteBook, toggleFavorite } from "../../redux/books/actionCreators";
 
@@ -40,15 +40,15 @@ const hendleToggleFavortie = (id) => dispatch(toggleFavorite(id));
       <div className="flex gap-2">
         <button
           onClick={() => handleDeleteBook(book.id)}
-          className="px-3 py-3 bg-red-500 hover:bg-red-600 text-xs transition-colors duration-300 text-white cursor-pointer rounded-lg"
+          className="px-3 py-2 bg-red-700 hover:bg-red-600 text-xs transition-colors duration-300 text-white cursor-pointer rounded-lg"
         >
-          <HiArchiveBox />
+          <FaTrashAlt className="w-4 h-4" />
           </button>
           <button
             onClick={() => hendleToggleFavortie(book.id)}
             className={`${book.isFavorite ? " bg-amber-400 hover:bg-amber-300": "bg-gray-400 hover:bg-gray-300"} px-3 py-2 transition-colors duration-300 text-white cursor-pointer rounded-lg`}
           >
-          <HiBookmark />
+          <FaBookmark  />
           </button>
       </div>
    </li>
