@@ -25,20 +25,20 @@ const Filter = () => {
 
   return (
     <div className=" flex flex-col gap-4 p-4 m-4 bg-[#f2f2f2] rounded-lg shadow-lg">
-      <div className="flex gap-4 max-lg: flex-wrap">
+      <div className="flex gap-4 max-lg:flex-wrap">
         <input 
           onChange={handleByTitle}
           value={stateOftitle}
           type="text"
           placeholder= "Filter by title"
-          className="px-4 py-2 border-1 border-gray-300 rounded-lg"
+          className="px-4 py-2 border-1 border-gray-300 rounded-lg w-full"
         />
         <input 
         onChange={handleByAuthor}
         value={stateOfAuthor}
         type="text"
         placeholder= "Filter by name"
-        className="px-4 py-2 border-1 border-gray-300 rounded-lg"
+        className="px-4 py-2 border-1 border-gray-300 rounded-lg w-full"
         />
       </div>
       <div className="flex items-center gap-4 justify-between">

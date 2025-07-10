@@ -33,8 +33,10 @@ const Form = () => {
       
       dispatch(addBook(createBookWithID({title, author,}, "via form" )))
       setState({title: "", author: ""})
-    } else {}
-    dispatch(setError("Please fill in both fields."))
+    } else {
+      dispatch(setError("Please fill in both fields."))
+    }
+    
   }
 
   const hendleAddRandomBook =() => dispatch(addBook(createBookWithID(data[Math.floor(Math.random() * data.length)], "via random")));
@@ -45,8 +47,8 @@ const Form = () => {
 
 ;
   return (
-    <div className="w-full p-4 m-4 bg-[#f2f2f2] rounded-lg shadow-lg">
-      <h2 className='mb-4 text-2xl'>add a new Book</h2>
+    <div className="p-4 m-4 bg-[#f2f2f2] rounded-lg shadow-lg">
+      <h2 className='mb-4 text-2xl text-center'>Add a New Book</h2>
       <form onSubmit={handleSubmit}>  
           <input 
             type="text"
